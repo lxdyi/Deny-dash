@@ -86,7 +86,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen -mt-12">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-8 rounded w-full max-w-sm"
