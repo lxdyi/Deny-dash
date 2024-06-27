@@ -92,7 +92,7 @@ const Quran = () => {
         >
           اضفات سورة
         </Button>
-        <h2 className="text-bold text-[30px]"> السور</h2>
+        <h2 className="text-bold text-[30px]"> الورد اليومي</h2>
       </div>
 
       <div className="px-10 py-4">

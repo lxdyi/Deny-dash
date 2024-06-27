@@ -1,9 +1,11 @@
 import { useMemo } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
 import { MdPayment, MdExitToApp } from "react-icons/md";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   const links = useMemo(
     () => [
       {
@@ -40,7 +42,7 @@ const Sidebar = () => {
   );
 
   const handleLogOut = () => {
-    console.log("Logging out...");
+    navigate("/");
   };
 
   return (
