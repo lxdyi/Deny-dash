@@ -8,13 +8,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-
+import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-
-import DeleteSurah from "./DeleteSurah";
-import UpdateSurah from "./UpdateSurah";
-import SurahPlayer from "./SurahPlayer";
-
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import UpdateAdhdhkar from "./UpdateAdhdhkar";
+import DeleteAdhdhkar from "./DeleteAdhdhkar";
+import AdhdhkarPlay from "./AdhdhkarPlay";
 function EnhancedTableHead({ headCells }) {
   return (
     <TableHead>
@@ -24,7 +25,7 @@ function EnhancedTableHead({ headCells }) {
             key={headCell.id}
             align="right"
             padding="normal"
-            sx={{ borderBottom: "none", pr: "10px", textAlign: "center" }}
+            sx={{ borderBottom: "none", pr: "60px", textAlign: "center" }}
           >
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {headCell.label}
@@ -36,12 +37,50 @@ function EnhancedTableHead({ headCells }) {
   );
 }
 
-const Tables = ({ headCells, rows }) => {
+function EnhancedTableToolbar(props) {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        backgroundColor: "#E8EDF1",
+        pr: { xs: 1, sm: 1 },
+        display: "flex",
+        justifyContent: "space-between",
+        ...(numSelected > 0 && {
+          bgcolor: (theme) =>
+            alpha(
+              theme.palette.primary.main,
+              theme.palette.action.activatedOpacity
+            ),
+        }),
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Tooltip title="قائمة التصفية">
+          <IconButton>
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
+      <Typography
+        variant="h6"
+        id="tableTitle"
+        component="div"
+        sx={{ fontWeight: "bold", textAlign: "center" }}
+      >
+        حجوزات المزارات
+      </Typography>
+    </Toolbar>
+  );
+}
+
+const AdhkarTable = ({ headCells, rows, type }) => {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [selectedSurah, setSelectedSurah] = React.useState(null);
-
+  const [selectedAdh, setSelectedAdh] = React.useState(null);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -57,14 +96,14 @@ const Tables = ({ headCells, rows }) => {
     () => rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
     [page, rowsPerPage, rows]
   );
-
   const handleCellClick = (row) => {
-    setSelectedSurah(row);
+    setSelectedAdh(row);
   };
 
   return (
     <>
       <Box sx={{ width: "100%", backgroundColor: "white" }}>
+      
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -87,24 +126,12 @@ const Tables = ({ headCells, rows }) => {
                 >
                   <TableCell
                     align="right"
-                    sx={{
-                      borderBottom: "none",
-                      textAlign: "center",
-                      display: "flex",
-                      gap: "5px",
-                      marginTop:"18px"
-                    }}
-                  >
-                    <DeleteSurah id={row.id} />
-                    <UpdateSurah id={row.id} />
-                  </TableCell>
-                  <TableCell
-                    align="right"
                     sx={{ borderBottom: "none", textAlign: "center" }}
                   >
-                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                      {row.date}
-                    </Typography>
+                    <div className="flex items-center gap-3 ml-10">
+                      <UpdateAdhdhkar type={type} id={row.id} />
+                      <DeleteAdhdhkar id={row.id} />
+                    </div>
                   </TableCell>
                   <TableCell
                     align="right"
@@ -112,48 +139,21 @@ const Tables = ({ headCells, rows }) => {
                   >
                     <Typography
                       variant="body1"
-                      sx={{ fontWeight: "bold", px: "50px" }}
+                      sx={{ fontWeight: "bold", pr: "60px" }}
                     >
-                      {row.name}
+                      {row.number}
                     </Typography>
                   </TableCell>
                   <TableCell
                     align="right"
-                    sx={{ borderBottom: "none", textAlign: "center" }}
-                  >
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: "bold", px: "50px" }}
-                    >
-                      {row.ayat}
-                    </Typography>
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    sx={{ borderBottom: "none", textAlign: "center" }}
-                  >
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: "bold", px: "50px" }}
-                    >
-                      {row.type === "Makiya"
-                        ? "مكية"
-                        : row.type === "Madania"
-                        ? "مدنية"
-                        : row.type}
-                    </Typography>
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    sx={{ borderBottom: "none", textAlign: "center" }}
+                    sx={{ borderBottom: "none" }}
                     onClick={() => handleCellClick(row)}
                   >
-                    <video className="w-20 h-20">
-                      <source
-                        src={`https://deen.somee.com/files/${row.File}`}
-                        type="video/mp4"
-                      />
-                    </video>
+                    <img
+                      src={`https://deen.somee.com/files/${row.image}`}
+                      alt="Placeholder"
+                      className="w-20 h-20 relative left-[50px]"
+                    />
                   </TableCell>
                   <TableCell
                     align="right"
@@ -161,7 +161,7 @@ const Tables = ({ headCells, rows }) => {
                   >
                     <Typography
                       variant="body1"
-                      sx={{ fontWeight: "bold", px: "50px" }}
+                      sx={{ fontWeight: "bold", pr: "50px" }}
                     >
                       {row.id}
                     </Typography>
@@ -179,15 +179,15 @@ const Tables = ({ headCells, rows }) => {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        
         />
       </Box>
-      {selectedSurah && (
+      {selectedAdh && (
         <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-gray-800 bg-opacity-50 flex  justify-center overflow-auto">
           <div className="w-[700px] h-fit rounded-lg bg-white flex justify-center mt-4 ">
-            <SurahPlayer
-              surah={selectedSurah}
-              setSelectedSurah={setSelectedSurah}
+            <AdhdhkarPlay
+              Adhdhkar={selectedAdh}
+              setSelectedAdh={setSelectedAdh}
+              type={type}
             />
           </div>
         </div>
@@ -196,4 +196,4 @@ const Tables = ({ headCells, rows }) => {
   );
 };
 
-export default Tables;
+export default AdhkarTable;

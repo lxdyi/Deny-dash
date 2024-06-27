@@ -680,3 +680,4 @@ export const ClosthsRefundsRows = [
   createClosthsRefundsData(2, "Cap", "#112578", "22-11-2023", 10, "$1000"),
   createClosthsRefundsData(3, "Cap", "#112578", "22-11-2023", 10, "$1000"),
 ];
+

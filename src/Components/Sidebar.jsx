@@ -1,30 +1,53 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
 import { MdPayment, MdExitToApp } from "react-icons/md";
 
 const Sidebar = () => {
-  const [links] = useState([
-    {
-      label: "الرئيسية",
-      path: "/dashboard",
-      img: "/src/assets/dash.png",
-      icon: FiHome,
-    },
-    {
-      label: "رقع الفدوهات",
-      path: "/upload",
-      img: "/src/assets/up.png",
-      icon: MdPayment,
-    },
-  ]);
+  const links = useMemo(
+    () => [
+      {
+        label: "السور",
+        path: "/app",
+        img: "/src/assets/Stare.png",
+        icon: FiHome,
+        alt: "Dashboard Icon",
+      },
+
+      {
+        label: "اذكار الصباح",
+        path: "/app/moringAdhdhkar",
+        img: "/src/assets/book.png",
+        icon: MdPayment,
+        alt: "Upload Icon",
+      },
+      {
+        label: "اذكار المساء",
+        path: "/app/eveningAdhdhkar",
+        img: "/src/assets/book.png",
+        icon: MdPayment,
+        alt: "Upload Icon",
+      },
+      {
+        label: "اذكار قبل النوم",
+        path: "/app/sleepingAdhdhkar",
+        img: "/src/assets/book.png",
+        icon: MdPayment,
+        alt: "Upload Icon",
+      },
+    ],
+    []
+  );
 
   const handleLogOut = () => {
     console.log("Logging out...");
   };
 
   return (
-    <div className="flex flex-col px-3  w-[200px] h-full rel">
+    <nav
+      className="flex flex-col px-3 w-[200px] h-full"
+      aria-label="Sidebar Navigation"
+    >
       <ul className="mt-5">
         {links.map((link, index) => (
           <li className="text-[20px] text-[#9094A0] mt-5" key={index}>
@@ -38,30 +61,23 @@ const Sidebar = () => {
               }
               end
             >
-              <img src={link.img} alt="icon" />
+              <img src={link.img} alt={link.alt} className="icon" />
               {link.label}
             </NavLink>
           </li>
         ))}
       </ul>
 
-      <div
+      <button
         onClick={handleLogOut}
-        className="cursor-pointer flex items-center gap-2  text-neutral-600 text-[14px] fixed bottom-[60px] right-7"
+        className="cursor-pointer flex items-center gap-2 text-neutral-600 text-[14px] fixed bottom-[60px] right-7"
         dir="rtl"
+        aria-label="Logout Button"
       >
-        <NavLink
-          to="/"
-          className="flex items-center gap-2"
-          onClick={handleLogOut}
-        >
-          <MdExitToApp className="text-[16px]" />
-          <p dir="rtl" className="">
-            تسجلا الخروج
-          </p>
-        </NavLink>
-      </div>
-    </div>
+        <MdExitToApp className="text-[16px]" />
+        تسجيل الخروج
+      </button>
+    </nav>
   );
 };
 
