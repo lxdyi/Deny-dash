@@ -9,11 +9,11 @@ const Sidebar = () => {
   const links = useMemo(
     () => [
       {
-        label: "السور",
+        label: "الورد اليومي",
         path: "/app",
         img: "/src/assets/Stare.png",
         icon: FiHome,
-        alt: "Dashboard Icon",
+        alt: "Stare Icon",
       },
 
       {
