@@ -11,7 +11,7 @@ const Sidebar = () => {
       {
         label: "الورد اليومي",
         path: "/app",
-        img: "https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/external-Quran-books-bearicons-detailed-outline-bearicons.png",
+        img: "src/assets/quran.png",
         icon: FiHome,
         alt: "quran Icon",
       },
@@ -63,7 +63,7 @@ const Sidebar = () => {
               }
               end
             >
-              <img src={link.img} alt={link.alt} className="w-[25px]" />
+              <img src={link.img} alt={link.alt} className="icon" />
               {link.label}
             </NavLink>
           </li>
