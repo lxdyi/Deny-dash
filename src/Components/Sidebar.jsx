@@ -11,9 +11,9 @@ const Sidebar = () => {
       {
         label: "الورد اليومي",
         path: "/app",
-        img: "/src/assets/Stare.png",
+        img: "/src/assets/quran.png",
         icon: FiHome,
-        alt: "Stare Icon",
+        alt: "quran Icon",
       },
 
       {
