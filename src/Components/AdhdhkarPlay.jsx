@@ -1,4 +1,3 @@
-import React from "react";
 import IconButton from "@mui/material/IconButton";
 import { Divider } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
@@ -23,7 +22,7 @@ const AdhdhkarPlay = ({ Adhdhkar, setSelectedAdh, type }) => {
       <Divider />
       <div className="flex flex-col gap-4 items-center py-7">
         <div className="border-dashed w-[60%] border-[3px] border-[#E0E5F2] rounded-lg ">
-          <img src={`https://deen.somee.com/files/${Adhdhkar.image}`} alt="" />
+          <img src={`http://quranapp.somee.com/files/${Adhdhkar.image}`} alt="" />
         </div>
       </div>
     </div>

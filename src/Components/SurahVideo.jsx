@@ -3,7 +3,7 @@ import { IoMdPause, IoIosPlay } from "react-icons/io";
 import { PiRepeatThin, PiRepeatOnceThin } from "react-icons/pi";
 import { Divider } from "@mui/material";
 const SurahVideo = ({ surah, onVideoEnd }) => {
-  const videoBaseUrl = "https://deen.somee.com/files/";
+  const videoBaseUrl = "http://quranapp.somee.com/files/";
   const [playing, setPlaying] = useState(true);
   const [loop, setLoop] = useState(false);
   const videoRef = useRef(null);

@@ -32,7 +32,7 @@ const SleepingAdhdhkar = () => {
     const fetchSleepingAdhkarData = async () => {
       try {
         const response = await axios.get(
-          "https://deen.somee.com/api/Dashboard/GetAllAthkarSleeping"
+          "http://quranapp.somee.com/api/Dashboard/GetAllAthkarSleeping"
         );
         const sleepingAdhkarData = response.data.map((item) =>
           createData(item.id.toString(), item.file, item.num.toString())
@@ -75,5 +75,3 @@ const SleepingAdhdhkar = () => {
 };
 
 export default SleepingAdhdhkar;
-
-

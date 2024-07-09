@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Divider } from "@mui/material";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
-const baseUrl = "https://deen.somee.com/files/";
+const baseUrl = "http://quranapp.somee.com/files/";
 
 const UpdateAdhdhkarForm = ({ id, onClose }) => {
   const [file, setFile] = useState(null);
@@ -13,7 +13,7 @@ const UpdateAdhdhkarForm = ({ id, onClose }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://deen.somee.com/api/Dashboard/GetAthkarById?AthkarId=${id}`
+          `http://quranapp.somee.com/api/Dashboard/GetAthkarById?AthkarId=${id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -69,7 +69,7 @@ const UpdateAdhdhkarForm = ({ id, onClose }) => {
 
     try {
       const response = await fetch(
-        `https://deen.somee.com/api/Dashboard/UpdateAthkar?AthkarId=${id}`,
+        `http://quranapp.somee.com/api/Dashboard/UpdateAthkar?AthkarId=${id}`,
         {
           method: "PUT",
           body: formData,

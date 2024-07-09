@@ -53,7 +53,7 @@ const UploadSurah = ({ onClose }) => {
       const startTime = Date.now();
 
       const response = await fetch(
-        "https://deen.somee.com/api/Dashboard/AddQuran",
+        "http://quranapp.somee.com/api/Dashboard/AddQuran",
         {
           method: "POST",
           body: formData,

@@ -6,7 +6,7 @@ const DeleteAdhdhkar = ({ id, onDeleteSuccess }) => {
     e.stopPropagation();
     try {
       const response = await fetch(
-        `https://deen.somee.com/api/Dashboard/DeleteAthkar?AthkarId=${id}`,
+        `http://quranapp.somee.com/api/Dashboard/DeleteAthkar?AthkarId=${id}`,
         {
           method: "DELETE",
         }

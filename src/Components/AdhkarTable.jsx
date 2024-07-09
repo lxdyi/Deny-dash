@@ -150,7 +150,7 @@ const AdhkarTable = ({ headCells, rows, type }) => {
                     onClick={() => handleCellClick(row)}
                   >
                     <img
-                      src={`https://deen.somee.com/files/${row.image}`}
+                      src={`http://quranapp.somee.com/files/${row.image}`}
                       alt="Placeholder"
                       className="w-20 h-20 relative left-[50px]"
                     />

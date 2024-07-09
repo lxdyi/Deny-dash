@@ -5,7 +5,7 @@ const DeleteSurah = ({ id, onDeleteSuccess }) => {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `https://deen.somee.com/api/Dashboard/DeleteQuran?QuranId=${id}`, // Changed AthkarId to QuranId
+        `http://quranapp.somee.com/api/Dashboard/DeleteQuran?QuranId=${id}`, // Changed AthkarId to QuranId
         {
           method: "DELETE",
         }

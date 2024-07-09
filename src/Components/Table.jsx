@@ -150,7 +150,7 @@ const Tables = ({ headCells, rows }) => {
                   >
                     <video className="w-20 h-20">
                       <source
-                        src={`https://deen.somee.com/files/${row.File}`}
+                        src={`http://quranapp.somee.com/files/${row.File}`}
                         type="video/mp4"
                       />
                     </video>

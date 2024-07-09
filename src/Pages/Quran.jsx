@@ -55,7 +55,7 @@ const Quran = () => {
     const fetchQuranData = async () => {
       try {
         const response = await axios.get(
-          "https://deen.somee.com/api/Dashboard/GetAllQuran"
+          "http://quranapp.somee.com/api/Dashboard/GetAllQuran"
         );
         const quranData = response.data.map((item) =>
           createData(

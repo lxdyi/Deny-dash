@@ -34,7 +34,7 @@ const MorningAdhkar = () => {
     const fetchMorningAdhkarData = async () => {
       try {
         const response = await axios.get(
-          "https://deen.somee.com/api/Dashboard/GetAllAthkarMorning"
+          "http://quranapp.somee.com/api/Dashboard/GetAllAthkarMorning"
         );
         const morningAdhkarData = response.data.map((item) =>
           createData(item.id.toString(), item.file, item.num.toString())

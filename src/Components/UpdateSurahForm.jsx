@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Divider } from "@mui/material";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
-const baseUrl = "https://deen.somee.com/files/";
+const baseUrl = "http://quranapp.somee.com/files/";
 
 const UpdateSurahForm = ({ id, onClose }) => {
   const [file, setFile] = useState(null);
@@ -15,7 +15,7 @@ const UpdateSurahForm = ({ id, onClose }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://deen.somee.com/api/Dashboard/GetQuranById?QuranId=${id}`
+          `http://quranapp.somee.com/api/Dashboard/GetQuranById?QuranId=${id}`
         );
         const data = await response.json();
         setName(data.name);
@@ -58,7 +58,7 @@ const UpdateSurahForm = ({ id, onClose }) => {
 
     try {
       const response = await fetch(
-        `https://deen.somee.com/api/Dashboard/UpdateQuran?QuranId=${id}`,
+        `http://quranapp.somee.com/api/Dashboard/UpdateQuran?QuranId=${id}`,
         {
           method: "PUT",
           body: formData,

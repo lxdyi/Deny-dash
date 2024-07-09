@@ -31,13 +31,13 @@ const UploadAdhkar = ({ onClose, type }) => {
   const getApiUrl = (type) => {
     switch (type) {
       case "morning":
-        return "https://deen.somee.com/api/Dashboard/AddAthkarMorning";
+        return "http://quranapp.somee.com/api/Dashboard/AddAthkarMorning";
       case "evening":
-        return "https://deen.somee.com/api/Dashboard/AddAthkarEvening";
+        return "http://quranapp.somee.com/api/Dashboard/AddAthkarEvening";
       case "sleeping":
-        return "https://deen.somee.com/api/Dashboard/AddAthkarSleeping";
+        return "http://quranapp.somee.com/api/Dashboard/AddAthkarSleeping";
       default:
-        return "https://deen.somee.com/api/Dashboard/AddAthkarMorning";
+        return "http://quranapp.somee.com/api/Dashboard/AddAthkarMorning";
     }
   };
 

@@ -13,7 +13,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const url = "https://deen.somee.com/api/Dashboard/LoginAdmin";
+const url = "http://quranapp.somee.com/api/Dashboard/LoginAdmin";
 const schema = yup
   .object({
     email: yup
